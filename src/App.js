@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Tabs from 'react-responsive-tabs';
+import 'react-responsive-tabs/styles.css';
+import dummyData from './dummy_data';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const someText = [{ name: 'Features', desc: dummyData[0] }, 
+                    { name: 'Description', desc: dummyData[1]},
+                    {name: 'Specifications', desc: dummyData[0]} ];
+ 
+function getTabs() {
+  return someText.map((tabData, index) => ({
+    title: tabData.name,
+    getContent: () => tabData.desc,
+    /* Optional parameters */
+    key: index,
+    tabClassName: 'tab',
+    panelClassName: 'panel',
+  }));
 }
+ 
+const App = () => <Tabs items={getTabs()} />;
+ 
 
 export default App;
