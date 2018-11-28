@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from 'react-responsive-tabs';
 import 'react-responsive-tabs/styles.css';
 import dummyData from './dummy_data';
+import './App.css';
 
 const someText = [{ name: 'Features', desc: dummyData[0] }, 
                     { name: 'Description', desc: dummyData[1]},
@@ -12,13 +13,15 @@ function getTabs() {
     title: tabData.name,
     getContent: () => tabData.desc,
     /* Optional parameters */
-    key: index,
+    // key: index,
     tabClassName: 'tab',
     panelClassName: 'panel',
+    // transform: true
+    // transformWidth: 767
+    showInkBar: true
   }));
 }
  
 const App = () => <Tabs items={getTabs()} />;
- 
 
 export default App;
